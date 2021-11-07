@@ -39,12 +39,18 @@ switch (uname)
     set PATH $BREWHOME/sbin $PATH
     set PATH $LEAN_HOME/bin $PATH
 
-    set C_INCLUDE_PATH /opt/homebrew/include $C_INCLUDE_PATH
-    set LIBRARY_PATH /opt/homebrew/lib $LIBRARY_PATH
+    set -g C_INCLUDE_PATH /opt/homebrew/include $C_INCLUDE_PATH
+    set -g LIBRARY_PATH /opt/homebrew/lib $LIBRARY_PATH
+    set -g DYLD_LIBRARY_PATH /opt/homebrew/lib $DYLD_LIBRARY_PATH
 
     # export CPPFLAGS="-I/opt/homebrew/opt/openjdk/include"
     set -g LDFLAGS "-L/opt/homebrew/opt/llvm@11/lib"
     set -g CPPFLAGS "-I/opt/homebrew/opt/llvm@11/include"
+
+    set -g LDFLAGS "-L/opt/homebrew/opt/openblas/lib" $LDFLAGS
+    set -g CPPFLAGS "-I/opt/homebrew/opt/openblas/include" $CPPFLAGS
+
+    set -gx PKG_CONFIG_PATH "/opt/homebrew/opt/openblas/lib/pkgconfig"
   case Linux
     set -g SAGE_ROOT /usr/share/sagemath
     set -g Z3_HOME  $HOME/App/z3
