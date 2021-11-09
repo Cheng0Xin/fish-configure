@@ -4,6 +4,17 @@
 set -g BACKGROUND dark
 set -g CHINA false
 
+set HINT "论文写好了吗? 今天练琴了吗? 锻炼身体了吗?
+              革命, 胜利了吗?"
+
+set -U fish_greeting "☭ The proletarians have nothing to \
+lose but their chains.
+They have a world to win. 无产阶级必胜!
+
+λ ⤃ 灵魂提问:〖
+  $HINT
+〗"
+
 if test $BACKGROUND = "light"
   set -g BAT_THEME "Monokai Extended Light"
 else
@@ -38,6 +49,7 @@ switch (uname)
     set PATH $BREWHOME/bin $PATH
     set PATH $BREWHOME/sbin $PATH
     set PATH $LEAN_HOME/bin $PATH
+    set PATH /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk/System/Library/Perl/5.30/darwin-thread-multi-2level/CORE/ $PATH
 
     set -g C_INCLUDE_PATH /opt/homebrew/include $C_INCLUDE_PATH
     set -g LIBRARY_PATH /opt/homebrew/lib $LIBRARY_PATH
