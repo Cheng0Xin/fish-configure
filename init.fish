@@ -38,6 +38,7 @@ switch (uname)
         set -gx CPPFLAGS "-I/opt/homebrew/opt/llvm@11/include"
 
         set -g TEX_HOME /Library/TeX/texbin
+        set -g SML_HOME /usr/local/smlnj
         set -g RACKET_HOME /Applications/Racket
         set -g JAVA_HOME /opt/homebrew/opt/java11/
         set -g JULIA_HOME /Applications/Julia-1.7.app/Contents/Resources/julia/
@@ -55,6 +56,7 @@ switch (uname)
         set PATH $LEAN_HOME/bin $PATH
         set PATH /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk/System/Library/Perl/5.30/darwin-thread-multi-2level/CORE/ $PATH
         set PATH $GHC_HOME/bin $PATH
+        set PATH $SML_HOME/bin $PATH
 
         set -g C_INCLUDE_PATH /opt/homebrew/include $C_INCLUDE_PATH
         set -g C_INCLUDE_PATH (xcrun --show-sdk-path)/usr/include/ffi $C_INCLUDE_PATH
@@ -116,8 +118,8 @@ end
 alias v='nvim'
 alias xdg-open='open'
 alias m='make'
+alias te='emacs -nw'
 alias e='emacs -nw'
-alias em='emacs'
 alias l='exa --icons -a'
 alias la='exa --icons -a'
 alias ll='exa --icons -lah'
@@ -130,7 +132,6 @@ alias mr='make run'
 alias top='htop'
 alias ps='procs'
 alias cl='clear'
-alias todo='ultralist'
 
 # Languages
 # opam configuration
