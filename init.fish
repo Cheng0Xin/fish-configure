@@ -34,18 +34,24 @@ set PATH $CARGO_HOME/bin $PATH
 
 switch (uname)
     case Darwin
-        set -gx LDFLAGS "-L/opt/homebrew/opt/llvm@11/lib"
-        set -gx CPPFLAGS "-I/opt/homebrew/opt/llvm@11/include"
+	# set -gx LDFLAGS "-L/opt/homebrew/opt/llvm@11/lib"
+	# set -gx CPPFLAGS "-I/opt/homebrew/opt/llvm@11/include"
 
         set -g TEX_HOME /Library/TeX/texbin
         set -g SML_HOME /usr/local/smlnj
         set -g RACKET_HOME /Applications/Racket
         set -g JAVA_HOME /opt/homebrew/opt/java11/
         set -g JULIA_HOME /Applications/Julia-1.7.app/Contents/Resources/julia/
-        set -g SPARK_HOME $HOME/App/spark3
+        set -g SPARK_HOME $HOME/App/spark-3.3
+        set -g PYTHONPATH $SPARK_HOME/python/lib $PYTHONPATH
         set -g BREWHOME /opt/homebrew
         set -g LEAN_HOME $HOME/App/lean-4
         set -g GHC_HOME $HOME/App/ghc-9
+        set -g RUBY_HOME $BREWHOME/Cellar/ruby@3.0/3.0.4
+        set -g OPENMPI_HOME $HOME/App/mpi
+        set -g PERL_HOME /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk/System/Library/Perl/5.30/darwin-thread-multi-2level/CORE/
+	set -g DOTNET_HOME $HOME/.dotnet/tools
+        set PATH $RUBY_HOME/bin $PATH
         set PATH $TEX_HOME $PATH
         set PATH $RACKET_HOME/bin $PATH
         set PATH $JAVA_HOME/bin $PATH
@@ -54,9 +60,11 @@ switch (uname)
         set PATH $BREWHOME/bin $PATH
         set PATH $BREWHOME/sbin $PATH
         set PATH $LEAN_HOME/bin $PATH
-        set PATH /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk/System/Library/Perl/5.30/darwin-thread-multi-2level/CORE/ $PATH
+        set PATH $OPENMPI_HOME/bin $PATH
+        set PATH $PERL_HOME $PATH
         set PATH $GHC_HOME/bin $PATH
         set PATH $SML_HOME/bin $PATH
+	set PATH $DOTNET_HOME $PATH
 
         set -g C_INCLUDE_PATH /opt/homebrew/include $C_INCLUDE_PATH
         set -g C_INCLUDE_PATH (xcrun --show-sdk-path)/usr/include/ffi $C_INCLUDE_PATH
@@ -65,8 +73,8 @@ switch (uname)
         set -g DYLD_FALLBACK_LIBRARY_PATH /opt/homebrew/lib $DYLD_FALLBACK_LIBRARY_PATH
 
         # export CPPFLAGS="-I/opt/homebrew/opt/openjdk/include"
-        set -g LDFLAGS "-L/opt/homebrew/opt/llvm@11/lib"
-        set -g CPPFLAGS "-I/opt/homebrew/opt/llvm@11/include"
+	# set -g LDFLAGS "-L/opt/homebrew/opt/llvm@11/lib"
+	# set -g CPPFLAGS "-I/opt/homebrew/opt/llvm@11/include"
 
         set -g LDFLAGS -L/opt/homebrew/opt/openblas/lib $LDFLAGS
         set -g CPPFLAGS -I/opt/homebrew/opt/openblas/include $CPPFLAGS
@@ -115,18 +123,20 @@ if test $CHINA = true
 end
 
 # Alias
+alias vim='nvim'
 alias v='nvim'
+alias e='emacs -nw'
 alias xdg-open='open'
 alias m='make'
-alias te='emacs -nw'
-alias e='emacs -nw'
+# alias te='emacs -nw'
+# alias e='emacs -nw'
 alias l='exa --icons -a'
 alias la='exa --icons -a'
 alias ll='exa --icons -lah'
 alias ls='exa --icons'
 alias lt='exa --icons -T'
 alias gls='ls'
-alias vim='nvim'
+# alias vim='nvim'
 alias cat='bat --theme "$BAT_THEME"'
 alias mr='make run'
 alias top='htop'
